@@ -21,6 +21,11 @@ function navbar() {
     })
 }
 
+var userinfos = JSON.parse(localStorage.getItem('userinfos'))
+    if(!userinfos){
+        window.location = 'signup1.html'
+    }
+
 var loginuser = JSON.parse(localStorage.getItem('loginuser'))
 var welcomename1 = loginuser ? loginuser.firstname : '';
 var welcomename2 = loginuser ? loginuser.lastname : '';
