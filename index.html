@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>The Chat Cup</title>
+</head>
+
+<body>
+    <div id="nav-bar">
+        <div id="nav-logo">
+            <img src="./assets/Logo final.png" alt="Logo Here">
+        </div>
+        <div id="nav-options">
+            <h1 class="nav-li" id="h1main">Hii</h1>
+        </div>
+        <div onclick="navbar()" id="nav-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#feed">
+                            <span class="icon">🏠</span>
+                            <span class="text">Home/Feed</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#friends">
+                            <span class="icon">👥</span>
+                            <span class="text">Friends/Connections</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./createpost.html">
+                            <span class="icon">✏️</span>
+                            <span class="text">Create Post</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#notifications">
+                            <span class="icon">🔔</span>
+                            <span class="text">Notifications</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#profile">
+                            <span class="icon">👤</span>
+                            <span class="text">View Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#edit-profile">
+                            <span class="icon">⚙️</span>
+                            <span class="text">Edit Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#settings">
+                            <span class="icon">💡</span>
+                            <span class="text">Settings/Theme</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item logout-item">
+                        <a href="#logout">
+                            <span class="icon">➡️</span>
+                            <span class="text">Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <main class="main-content">
+            <input type="text" id="search" placeholder="Search by Title">
+            <button onclick="search()" class="primary-btn1">Search</button>
+        </main>
+        <!-- posts -->
+        <div class="mycard card " style="width: 18rem;">
+        </div>
+        <!-- dropdown -->
+
+    </div>
+
+
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

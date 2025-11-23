@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | PAKIM</title>
+    <link rel="stylesheet" href="./signup1.css">
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="Pakim-logo2.png" alt="PAKIM Logo" class="logo">
+    </div>
+
+    <div class="form-container">
+        <h1>Create Your Account</h1>
+        <p class="subtitle">Join Pakistan International Marketing</p>
+
+        <form id="signup-form">
+
+            <div id="main-error" class="main-error"></div>
+
+            <div class="input-group">
+                <div id="input-group1">
+                    <input class="input" id="firstname" type="text" placeholder="First Name">
+                    <span class="error-text" id="firstname-error"></span>
+                </div>
+                <div id="input-group1">
+                    <input class="input" id="lastname" type="text" placeholder="Last Name">
+                    <span class="error-text" id="lastname-error"></span>
+                </div>
+            </div>
+
+            <div class="input-group full-width">
+                <input class="input" id="username" type="text" placeholder="Username">
+                <span class="error-text" id="username-error"></span>
+            </div>
+
+            <div class="input-group full-width">
+                <input class="input" id="email" type="text" placeholder="Email">
+                <span class="error-text" id="email-error"></span>
+            </div>
+
+            <div class="input-group">
+                <div id="input-group1">
+                    <input class="input" id="password" type="password" placeholder="Password (Min 8 characters)">
+                    <span class="error-text" id="password-error"></span>
+                </div>
+                <div id="input-group1">
+                    <input class="input" id="confirmpassword" type="password" placeholder="Confirm Password">
+                    <span class="error-text" id="confirmpassword-error"></span>
+                </div>
+            </div>
+
+            <div class="terms-check">
+                <div>
+                    <input id="check" type="checkbox">
+                    <p>I agree to the <a href="#">Terms & Conditions</a></p>
+                </div>`
+                <span class="error-text" id="check-error"></span>
+            </div>
+
+            <button class="submit-btn" type="button" onclick="submithandler()">Sign Up</button>
+
+            <p class="login-prompt">
+                Already have an account? <a href="./login1.html">Log In</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="./signup1.js"></script>
+</body>
+
+</html>
