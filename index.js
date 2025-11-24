@@ -1,5 +1,3 @@
-let allposts = [];
-
 function navbar() {
     let navdiv = document.createElement("div")
     navdiv.setAttribute('id', 'mob-nav')
@@ -21,14 +19,9 @@ function navbar() {
     })
 }
 
-var userinfos = JSON.parse(localStorage.getItem('userinfos'))
-    if(!userinfos){
-        window.location = 'signup1.html'
-    }
-
 var loginuser = JSON.parse(localStorage.getItem('loginuser'))
-var welcomename1 = loginuser ? loginuser.firstname : '';
-var welcomename2 = loginuser ? loginuser.lastname : '';
+var welcomename1 = loginuser.firstname
+var welcomename2 = loginuser.lastname
 
 document.querySelector("#h1main").textContent = `WELCOME TO MR. ${welcomename1} ${welcomename2}`
 
@@ -44,90 +37,58 @@ const postui = `
                 <i class="fa-solid fa-ellipsis-vertical"></i>
             </div style="margin-bottom: 20px;">`
 
-function toggleLike(iconElement) {
-    const likeCounter = iconElement.nextElementSibling;
-    
-    if (iconElement.classList.contains('liked')) {
-        iconElement.classList.remove('liked');
-        iconElement.classList.remove('fa-solid');
-        iconElement.classList.add('fa-regular');
-        likeCounter.textContent = '0';
-        
-    } else {
-        iconElement.classList.add('liked');
-        iconElement.classList.remove('fa-regular');
-        iconElement.classList.add('fa-solid');
-        likeCounter.textContent = '1';
+function toggleLike() {
+    const likeCounter = document.querySelector('.like-counter')
+    const likebtn = document.querySelector('like-icon')
+    var counter = likeCounter.textContent 
+
+    if(likebtn.classList.contains('liked')){
+        likebtn.classList.remove('liked')
+        counter = counter--
+        likeCounter.textContent = counter
+    }
+    else{
+        likebtn.classList.add('liked')
+        counter = counter++
+        likeCounter.textContent = counter
     }
 }
-var checker1 = JSON.parse(localStorage.getItem('checkemail')) 
-var checker2 = JSON.parse(localStorage.getItem('loginuser'))
 
-var checker = ""
-if(checker2.email1 != checker1){
-   var checker = "active"
-}
-function createPostHTML(postdetails) {
-    if (!postdetails) return '';
-    
-    return `
-        <img src="${postdetails.posturl}" class="card-img-top" alt="...">
-        <div style="margin-bottom: 20px; class="card-body">
-            <h5 class="card-title">${postdetails.posttitle}</h5>
-            <p class="card-text">${postdetails.postdiscription}</p>
-        </div>
-        <div class="card-body post-footer">
-            <div class="post-actions">
-                <i class="fa-regular fa-heart like-icon" onclick="toggleLike(this)"></i>
-                <span class="like-counter">0</span>
+function postloader(result) {
+    const allposts = JSON.parse(localStorage.getItem('allposts')) || []
+
+    const modifiedjobs = allposts.map(function (postdetails) {
+        return `
+                <img src="${postdetails.posturl}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${postdetails.posttitle}</h5>
+                <p class="card-text">${postdetails.postdiscription}</p>
             </div>
-        <div class="dropdown ${checker}">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Edit Post</a></li>
-                <li><a class="dropdown-item" href="#">Delete Post</a></li>
-            </ul>
-        </div>
-        </div ">`;
-}
+            <div class="card-body post-footer">
+                <div class="post-actions">
+                   <i class="fa-regular fa-heart like-icon" onclick="toggleLike()"></i>
+                   <span class="like-counter">0</span>
+               </div>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div style="margin-bottom: 20px;">`
+    })
 
-
-
-function postloader() {
-    allposts = JSON.parse(localStorage.getItem('allposts')) || [];
-    renderPosts(allposts);
-}
-
-function renderPosts(posts) {
-    const allpostui = document.querySelector(".mycard");
-    
-    if (posts.length === 0) {
-        allpostui.innerHTML = '<h3 style="padding: 20px; color: #333333;">Not Found.</h3>';
-        return;
+    console.log(modifiedjobs)
+    var result1 = modifiedjobs
+    if(result){
+       result1 = result
     }
-    
-    const modifiedjobs = posts.map(createPostHTML);
-    allpostui.innerHTML = modifiedjobs.join("");
+    const allpostui = document.querySelector(".mycard")
+    allpostui.innerHTML = result1.join("")
 }
-
 postloader()
 
 
 function search(){
-    var searchInput = document.querySelector('#search').value.trim();
-    
-    const searchResult = allposts.find(function (postdetails) {
-        return postdetails.posttitle.toLowerCase() === searchInput.toLowerCase();
+    var search = document.querySelector('#search').value
+    const searchjobs = allposts.find(function (postdetails) {
+        return postdetails.posttitle == search
     })   
-
-    const allpostui = document.querySelector(".mycard");
-
-    if (searchResult) {
-        allpostui.innerHTML = createPostHTML(searchResult);
-    } else {
-        allpostui.innerHTML = '<h3 style="padding: 20px; color: #E74C3C;">Invalid Search Not found.</h3>';
-    }
+    postloader(searchjobs)
 }
+

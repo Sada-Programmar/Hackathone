@@ -348,3 +348,22 @@ body {
 .active{
     display: none;
 }
+.like-icon {
+    cursor: pointer;
+    padding: 5px; 
+    color: #333333; 
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.liked {
+    color: #E74C3C; 
+    font-weight: 900;
+}
+
+.like-counter {
+    color: #333333;
+    font-size: 16px;
+    margin-left: 5px;
+    font-weight: bold;
+}

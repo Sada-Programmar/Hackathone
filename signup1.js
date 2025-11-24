@@ -119,10 +119,10 @@ function submithandler() {
             showError('confirmpassword', 'Confirm Password Is not Matched')
             return
         }
-        var usernamecheck = userinfos.find(function(userdata){
-            return userdata.username1 == username
+        var emailcheck = userinfos.find(function(userdata){
+            return userdata.email1 == email
         })
-        if(!usernamecheck){
+        if(emailcheck){
             showMainError( 'Already Logged In Go TO Login')
             return
         }
